@@ -1,0 +1,15 @@
+{
+    "specversion": "1.0",
+    "type": "com.awesome_company.sales_order.Updated.v1",
+    "source": "https://prod.illidian.awesome_company.com/sales_orders",
+    "subject": "AWO0190240000132024",
+    "id": "f8e9d7c6-5b4a-3c2d-1e0f-9a8b7c6d5e4f",
+    "time": "2024-03-06 13:00:00",
+    "datacontenttype": "application/json",
+    "data": { 
+      "salesOrder": "9024000013",
+      "company": "AWO01",
+      "year": "2024",
+      "status": "Shipped"
+    }
+  }
