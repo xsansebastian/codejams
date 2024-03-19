@@ -1,5 +1,6 @@
-const fetch = require('node-fetch');
 const { CloudEvent, HTTP } = require("cloudevents");
+//const fetch = require('node-fetch');
+require('dotenv').config();
 
 //cloud event data
 const type = "com.awesome_company.sales_order.Updated.v1"
@@ -26,18 +27,14 @@ const soEvent = new CloudEvent({type,source,subject,data,sapcommunityid})
 
 //sending event to Solace
 const solace_protocol = "https"
-const solace_host = "mr-connection-plh11u5eu6a.messaging.solace.cloud"
-const solace_port = "9443"
-const solace_user = "solace-cloud-client"
-const solace_pwd = "mcrtp5mps5q12lfqed5kfndbi2"
 const solace_topic = `/dev-challenge/week-3/${sapcommunityid}/ce`
 
 const { headers, body } = HTTP.structured(soEvent);
 
-const postURL = `${solace_protocol}://${solace_host}:${solace_port}/TOPIC/${solace_topic}`
+const postURL = `${solace_protocol}://${process.env.SOLACE_HOST}:${process.env.SOLACE_PORT}/TOPIC/${solace_topic}`
 
 // Basic Authentication
-const basicAuth = 'Basic ' + Buffer.from(solace_user + ':' + solace_pwd).toString('base64');
+const basicAuth = 'Basic ' + Buffer.from(process.env.SOLACE_USER + ':' + process.env.SOLACE_PWD).toString('base64');
 
 headers["Authorization"] = basicAuth;
 
