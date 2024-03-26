@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "solclientjs": "^10.16.0"
+  }
+}
