@@ -26,7 +26,7 @@ const soEvent = new CloudEvent({type,source,subject,data,sapcommunityid})
 
 //sending event to Solace
 const solace_protocol = "https"
-const solace_topic = `dev-challenge/week-3/${sapcommunityid}/ce`
+const solace_topic = `dev-challenge/week-4/${sapcommunityid}/notification`
 
 const { headers, body } = HTTP.structured(soEvent);
 
