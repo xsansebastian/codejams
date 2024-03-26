@@ -7,20 +7,20 @@ const solacePassword = process.env.SOLACE_PASSWORD;
 const solaceVpn = process.env.SOLACE_VPN;
 const solaceTopic ="dev-challenge/week-4/xavisanse/processed"
 
-function consumeAwesomeEvents() {
+async function consumeAwesomeEvents() {
     const factoryProps = new solaceConsumer.SolclientFactoryProperties();
     factoryProps.profile = solaceConsumer.SolclientFactoryProfiles.version10;
     solaceConsumer.SolclientFactory.init(factoryProps);
-
+    
     const session = solaceConsumer.SolclientFactory.createSession({
         url: solaceHost,
         vpnName: solaceVpn,
         userName: solaceUsername,
-        password: solacePassword,
+        password: solacePassword,        
     });
-    
     session.on(solaceConsumer.SessionEventCode.UP_NOTICE, function (sessionEvent) {
         console.log('=== Successfully connected and ready to consume messages. ===');
+        subscribeToTopic(session, solaceTopic);
     });
 
     session.on(solaceConsumer.SessionEventCode.CONNECT_FAILED_ERROR, function (sessionEvent) {
@@ -43,7 +43,16 @@ function consumeAwesomeEvents() {
         console.log('Received message: ' + message.getBinaryAttachment());
     });
 
-    solaceConsumer.suscribe(solaceConsumer.SolclientFactory.createTopicDestination(solaceTopic), true, solaceTopic, 10000);
-}
+     session.connect();
 
+     function subscribeToTopic(session, topic) {
+        try {
+            const topicObject = solaceConsumer.SolclientFactory.createTopicDestination(topic);
+            console.log(`Subscribing to topic: ${topic}`);
+            session.subscribe(topicObject, true, topic, 10000);
+        } catch (error) {
+            console.error("Error subscribing to topic: " + error.toString());
+        }
+     }
+    }
 consumeAwesomeEvents();
