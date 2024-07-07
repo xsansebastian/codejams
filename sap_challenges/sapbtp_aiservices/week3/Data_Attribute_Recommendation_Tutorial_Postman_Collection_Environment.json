@@ -1,0 +1,34 @@
+{
+  "id": "f8540ea1-9784-4a57-b82e-cca73ab9ff7c",
+  "name": "Data-Attribute-Recommendation-Tutorial-Environment",
+  "values": [
+    {
+      "key": "authentication_endpoint",
+      "value": "https://7cdaab0ftrial.authentication.us10.hana.ondemand.com",
+      "enabled": true
+    },
+    {
+      "key": "clientid",
+      "value": "sb-a9a8de76-bfc5-4a6e-8bd0-ead21f37dacf!b263829|dar-std-trial!b40577",
+      "enabled": true
+    },
+    {
+      "key": "clientsecret",
+      "value": "eac0d268-973d-4ead-aa47-74188c10d5fb$X3PTujwtQu6YVqep1Sl_W2fMIKD8bbJTwKGbc_EXFwE=",
+      "enabled": true
+    },
+    {
+      "key": "hostname",
+      "value": "https://aiservices-trial-dar.cfapps.us10.hana.ondemand.com",
+      "enabled": true
+    },
+    {
+      "key": "model_template_id",
+      "value": "d7810207-ca31-4d4d-9b5a-841a644fd81f",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2019-10-14T15:25:47.959Z",
+  "_postman_exported_using": "Postman/7.5.0"
+}
